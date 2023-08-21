@@ -1,6 +1,6 @@
-﻿using GameCore.CodeBase.Gameplay.Location;
-using GameCore.CodeBase.Gameplay.Player.Input;
-using GameCore.CodeBase.Gameplay.Player.Object;
+﻿using GameCore.CodeBase.Infrastructure.Level.States;
+using GameCore.CodeBase.Infrastructure.Project.Services.Data;
+using GameCore.CodeBase.Infrastructure.Project.Services.StateMachine;
 using UnityEngine;
 using Zenject;
 
@@ -9,24 +9,22 @@ namespace GameCore.CodeBase.Infrastructure.Level
     public class LevelStartup : MonoBehaviour
     {
         [SerializeField] private LevelSceneData _sceneData;
-        private Locations _locations;
-        private PlayerObjectFactory _playerObjectFactory;
-        private PlayerInputFactory _playerInputFactory;
+        private IDataProvider _dataProvider;
+        private IStateMachine _stateMachine;
 
         [Inject]
-        private void Constructor(Locations locations, PlayerObjectFactory playerObjectFactory,
-            PlayerInputFactory playerInputFactory)
+        private void Constructor(IDataProvider dataProvider, IStateMachine stateMachine)
         {
-            _locations = locations;
-            _playerObjectFactory = playerObjectFactory;
-            _playerInputFactory = playerInputFactory;
+            _dataProvider = dataProvider;
+            _stateMachine = stateMachine;
         }
 
         private void Start()
         {
-            _locations.Initialize(_sceneData.LocationsData);
-            _playerObjectFactory.CreatePlayerObject(_sceneData.PlayerObjectPrefab);
-            _playerInputFactory.CreatePlayerInput(_sceneData.PlayerInputPrefab);
+            SetData();
+            _stateMachine.SwitchTo<LevelStartupState>();
         }
+
+        private void SetData() => _dataProvider.Set(_sceneData);
     }
 }

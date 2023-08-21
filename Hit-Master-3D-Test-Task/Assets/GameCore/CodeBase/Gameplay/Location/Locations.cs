@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace GameCore.CodeBase.Gameplay.Location
 {
@@ -17,5 +18,7 @@ namespace GameCore.CodeBase.Gameplay.Location
         public LocationData GetLocation(int locationIndex) => _locations[locationIndex];
 
         public LocationData GetFirstLocation() => GetLocation(0);
+
+        public LocationData GetLastLocation() => _locations[_locations.Count - 1];
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028417, g: 0.22571419, b: 0.30692288, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028419, g: 0.22571419, b: 0.30692294, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: afea6fcffd529a24daed4caae49812dd, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: ca0192a6c01740a44aa710fb36fe9850, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1187,13 +1187,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneData:
-    PlayerObjectPrefab: {fileID: 2542713771117419495, guid: d2aeb4cddafcc2d4389144ea2b190bf1, type: 3}
-    PlayerInputPrefab: {fileID: 4393095707829110103, guid: 3f11a2c88bb009c4abd157f76044958c, type: 3}
     LocationsData:
     - {fileID: 1476466324}
     - {fileID: 1833874255}
     - {fileID: 499800159}
     - {fileID: 300550284}
+    PlayerObjectPrefab: {fileID: 2542713771117419495, guid: d2aeb4cddafcc2d4389144ea2b190bf1, type: 3}
+    PlayerInputPrefab: {fileID: 4393095707829110103, guid: 3f11a2c88bb009c4abd157f76044958c, type: 3}
+    StartGameplayCheckPrefab: {fileID: 2911332815035092419, guid: df193a0d95b89304cb2fed96ea3d3441, type: 3}
 --- !u!114 &1329387396
 MonoBehaviour:
   m_ObjectHideFlags: 0
