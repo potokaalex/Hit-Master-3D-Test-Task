@@ -17,13 +17,16 @@ namespace GameCore.CodeBase.Gameplay.Player.Input
 
         private void Update()
         {
+            if (_playerObject.IsMoving)
+                return;
+
             if (_playerObject.CurrentLocation.EnemyCount > 0)
                 return;
 
             var nextLocationIndex = _playerObject.CurrentLocation.Index + 1;
 
             if (_locations.IsLocationExist(nextLocationIndex))
-                _playerObject.MoveTo(_locations.GetLocation(nextLocationIndex));
+                _playerObject.Move(_locations.GetLocation(nextLocationIndex));
         }
     }
 }

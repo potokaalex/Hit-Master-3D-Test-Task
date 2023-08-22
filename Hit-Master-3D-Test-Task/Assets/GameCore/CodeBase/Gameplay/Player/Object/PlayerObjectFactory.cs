@@ -1,4 +1,5 @@
 ﻿using GameCore.CodeBase.Gameplay.Location;
+using GameCore.CodeBase.Gameplay.Player.Movement;
 
 namespace GameCore.CodeBase.Gameplay.Player.Object
 {
@@ -9,12 +10,24 @@ namespace GameCore.CodeBase.Gameplay.Player.Object
 
         public PlayerObjectFactory(Locations locations) => _locations = locations;
 
-        public void CreatePlayerObject(PlayerObject prefab)
+        public void CreatePlayerObject(PlayerData prefab)
         {
-            _player = UnityEngine.Object.Instantiate(prefab);
-            _player.MoveTo(_locations.GetFirstLocation());
+            var firstLocation = _locations.GetFirstLocation();
+            var data = UnityEngine.Object.Instantiate(prefab);
+
+            _player = data.gameObject.AddComponent<PlayerObject>();
+            _player.Constructor(firstLocation, CreatePlayerMovement(data));
         }
 
         public PlayerObject Get() => _player;
+
+        private PlayerMovement CreatePlayerMovement(PlayerData data)
+        {
+            var movement = new PlayerMovement();
+
+            movement.Constructor(data.NavMeshAgent);
+
+            return movement;
+        }
     }
 }

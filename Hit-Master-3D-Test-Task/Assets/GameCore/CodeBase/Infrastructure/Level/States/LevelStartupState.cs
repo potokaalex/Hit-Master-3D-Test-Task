@@ -1,4 +1,5 @@
 ﻿using GameCore.CodeBase.Gameplay.Location;
+using GameCore.CodeBase.Gameplay.Player;
 using GameCore.CodeBase.Gameplay.Player.Object;
 using GameCore.CodeBase.Infrastructure.Project.Services.Data;
 using GameCore.CodeBase.Infrastructure.Project.Services.StateMachine;
@@ -29,16 +30,21 @@ namespace GameCore.CodeBase.Infrastructure.Level.States
             var sceneData = _dataProvider.Get<LevelSceneData>();
 
             _locations.Initialize(sceneData.LocationsData);
-            _playerObjectFactory.CreatePlayerObject(sceneData.PlayerObjectPrefab);
-
             _levelFactory.CreateGameplayCheck();
             _levelFactory.GetGameplayCheck().AddListener(_stateMachine.SwitchTo<LevelGameplayState>);
+            SetupPlayer(sceneData.PlayerPrefab);
         }
 
         public void Exit()
         {
             _levelFactory.GetGameplayCheck().RemoveListener(_stateMachine.SwitchTo<LevelGameplayState>);
             _levelFactory.RemoveGameplayCheck();
+        }
+
+        private void SetupPlayer(PlayerData prefab)
+        {
+            _playerObjectFactory.CreatePlayerObject(prefab);
+            _playerObjectFactory.Get().Initialize();
         }
     }
 }
