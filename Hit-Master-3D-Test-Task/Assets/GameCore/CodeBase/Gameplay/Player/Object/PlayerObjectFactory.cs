@@ -17,20 +17,20 @@ namespace GameCore.CodeBase.Gameplay.Player.Object
 
         public void CreatePlayerObject(PlayerObjectData prefab)
         {
-            var firstLocation = _locations.GetFirstLocation();
             var data = UnityEngine.Object.Instantiate(prefab);
 
             _player = data.gameObject.AddComponent<PlayerObject>();
-            _player.Constructor(firstLocation, CreatePlayerMovement(data), CreatePlayerWeapon(data));
+            _player.Constructor(CreatePlayerMovement(data, _player), CreatePlayerWeapon(data));
         }
 
         public PlayerObject Get() => _player;
 
-        private PlayerMovement CreatePlayerMovement(PlayerObjectData objectData)
+        private PlayerMovement CreatePlayerMovement(PlayerObjectData objectData, PlayerObject playerObject)
         {
+            var firstLocation = _locations.GetFirstLocation();
             var movement = new PlayerMovement();
 
-            movement.Constructor(objectData.NavMeshAgent, new(objectData.Animator));
+            movement.Constructor(objectData.NavMeshAgent, playerObject, firstLocation, new(objectData.Animator));
 
             return movement;
         }

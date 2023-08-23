@@ -9,7 +9,10 @@ namespace GameCore.CodeBase.Gameplay.Location
         public void Initialize(LocationObject[] locations)
         {
             foreach (var location in locations)
+            {
                 _locations[location.Index] = location;
+                location.Initialize();
+            }
         }
 
         public bool IsLocationExist(int locationIndex) => _locations.ContainsKey(locationIndex);

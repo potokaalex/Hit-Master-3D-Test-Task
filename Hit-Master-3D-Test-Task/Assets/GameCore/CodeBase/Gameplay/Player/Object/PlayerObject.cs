@@ -9,32 +9,17 @@ namespace GameCore.CodeBase.Gameplay.Player.Object
         private PlayerMovement _movement;
         private PlayerWeapon _weapon;
 
-        public LocationObject CurrentLocation { get; private set; }
+        public LocationObject CurrentLocation => _movement.CurrentLocation;
 
         public bool IsMoving => _movement.IsMoving;
 
-        public void Constructor(LocationObject firstLocation, PlayerMovement movement, PlayerWeapon weapon)
+        public void Constructor(PlayerMovement movement, PlayerWeapon weapon)
         {
-            CurrentLocation = firstLocation;
             _movement = movement;
             _weapon = weapon;
         }
 
-        public void Initialize()
-        {
-            var targetTransform = CurrentLocation.TransitionPoints[0].transform;
-
-            _movement.SetPosition(targetTransform.position);
-            _movement.SetRotation(targetTransform.rotation);
-        }
-
-        public void ChangeLocation(LocationObject location)
-        {
-            CurrentLocation = location;
-            CurrentLocation.Active();
-
-            StartCoroutine(_movement.MoveCoroutine(location));
-        }
+        public void StartMove(LocationObject location) => _movement.StartMove(location);
 
         public void Shoot(Vector3 targetPosition) => _weapon.Shoot(targetPosition);
     }

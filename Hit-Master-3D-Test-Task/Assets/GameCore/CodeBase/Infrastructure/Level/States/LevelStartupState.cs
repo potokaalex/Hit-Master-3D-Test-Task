@@ -32,19 +32,13 @@ namespace GameCore.CodeBase.Infrastructure.Level.States
             _locations.Initialize(sceneData.LocationsData);
             _levelFactory.CreateGameplayCheck();
             _levelFactory.GetGameplayCheck().AddListener(_stateMachine.SwitchTo<LevelGameplayState>);
-            SetupPlayer(sceneData.PlayerPrefab);
+            _playerObjectFactory.CreatePlayerObject(sceneData.PlayerPrefab);
         }
 
         public void Exit()
         {
             _levelFactory.GetGameplayCheck().RemoveListener(_stateMachine.SwitchTo<LevelGameplayState>);
             _levelFactory.RemoveGameplayCheck();
-        }
-
-        private void SetupPlayer(PlayerObjectData prefab)
-        {
-            _playerObjectFactory.CreatePlayerObject(prefab);
-            _playerObjectFactory.Get().Initialize();
         }
     }
 }

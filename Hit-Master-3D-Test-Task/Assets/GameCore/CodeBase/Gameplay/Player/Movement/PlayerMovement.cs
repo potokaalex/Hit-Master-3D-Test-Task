@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using GameCore.CodeBase.Gameplay.Location;
+using GameCore.CodeBase.Gameplay.Player.Object;
 using GameCore.CodeBase.Gameplay.Player.Player.Animation;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,42 +10,56 @@ namespace GameCore.CodeBase.Gameplay.Player.Movement
     public class PlayerMovement
     {
         private NavMeshAgent _agent;
+        private PlayerObject _playerObject;
         private PlayerAnimator _animator;
-
+        
         public bool IsMoving { get; private set; }
 
-        public void Constructor(NavMeshAgent agent,PlayerAnimator animator)
+        public LocationObject CurrentLocation { get; private set; }
+
+        public void Constructor(NavMeshAgent agent, PlayerObject playerObject, LocationObject firstLocation,
+            PlayerAnimator animator)
         {
             _agent = agent;
+            _playerObject = playerObject;
             _animator = animator;
+            CurrentLocation = firstLocation;
+            
+            var initialTransform = firstLocation.TransitionPoints[0].transform;
+            var agentTransform = _agent.transform;
+
+            agentTransform.position = initialTransform.position;
+            agentTransform.rotation = initialTransform.rotation;
         }
 
-        public void SetPosition(Vector3 position) =>
-            _agent.transform.position = position;
+        public void StartMove(LocationObject location)
+        {
+            IsMoving = true;
+            _animator.PlayRun();
+            _playerObject.StartCoroutine(MoveCoroutine(location));
+            CurrentLocation = location;
+        }
 
-        public void SetRotation(Quaternion rotation) =>
-            _agent.transform.rotation = rotation;
-        
-         public IEnumerator MoveCoroutine(LocationObject location)
+        private void StopMove()
+        {
+            IsMoving = false;
+            _animator.PlayIdle();
+            CurrentLocation.Active();
+        }
+
+        private IEnumerator MoveCoroutine(LocationObject location)
         {
             var pointIndex = 0;
 
-            IsMoving = true;
-            _animator.PlayRun();
             while (pointIndex < location.TransitionPoints.Length)
             {
-                var targetTransform = location.TransitionPoints[pointIndex].transform;
-                var targetPosition = targetTransform.position;
-                var agentTransform = _agent.transform;
+                var targetPosition = location.TransitionPoints[pointIndex].transform.position;
 
                 _agent.SetDestination(targetPosition);
 
                 while (true)
                 {
-                    var remainingOffset = targetPosition - agentTransform.position;
-                    var remainingDistance = new Vector2(remainingOffset.x, remainingOffset.z).magnitude;
-
-                    if (remainingDistance < _agent.stoppingDistance)
+                    if (IsStopCondition(targetPosition, _agent.transform))
                         break;
 
                     yield return new WaitForFixedUpdate();
@@ -52,9 +67,16 @@ namespace GameCore.CodeBase.Gameplay.Player.Movement
 
                 pointIndex++;
             }
-            
-            _animator.PlayIdle();
-            IsMoving = false;
+
+            StopMove();
+        }
+
+        private bool IsStopCondition(Vector3 targetPosition, Transform agentTransform)
+        {
+            var remainingOffset = targetPosition - agentTransform.position;
+            var remainingDistance = new Vector2(remainingOffset.x, remainingOffset.z).magnitude;
+
+            return remainingDistance < _agent.stoppingDistance;
         }
     }
 }

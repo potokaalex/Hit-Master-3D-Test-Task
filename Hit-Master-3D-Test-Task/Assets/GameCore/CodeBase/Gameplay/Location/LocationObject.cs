@@ -10,7 +10,7 @@ namespace GameCore.CodeBase.Gameplay.Location
         public List<EnemyObject> Enemies;
         public LocationTransitionPoint[] TransitionPoints;
 
-        private void Start()
+        public void Initialize()
         {
             foreach (var enemy in Enemies)
             {

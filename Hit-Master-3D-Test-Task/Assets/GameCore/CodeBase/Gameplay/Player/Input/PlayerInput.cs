@@ -19,11 +19,11 @@ namespace GameCore.CodeBase.Gameplay.Player.Input
 
         private void Update()
         {
-            ChangeLocation();
+            Move();
             Shoot();
         }
 
-        private void ChangeLocation()
+        private void Move()
         {
             if (_playerObject.IsMoving)
                 return;
@@ -34,7 +34,7 @@ namespace GameCore.CodeBase.Gameplay.Player.Input
             var nextLocationIndex = _playerObject.CurrentLocation.Index + 1;
 
             if (_locations.IsLocationExist(nextLocationIndex))
-                _playerObject.ChangeLocation(_locations.GetLocation(nextLocationIndex));
+                _playerObject.StartMove(_locations.GetLocation(nextLocationIndex));
         }
 
         private void Shoot()
