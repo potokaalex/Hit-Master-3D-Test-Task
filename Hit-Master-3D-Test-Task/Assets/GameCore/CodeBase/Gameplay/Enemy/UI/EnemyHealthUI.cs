@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace GameCore.CodeBase.Gameplay.Enemy
+namespace GameCore.CodeBase.Gameplay.Enemy.Ui
 {
     public class EnemyHealthUI : MonoBehaviour
     {

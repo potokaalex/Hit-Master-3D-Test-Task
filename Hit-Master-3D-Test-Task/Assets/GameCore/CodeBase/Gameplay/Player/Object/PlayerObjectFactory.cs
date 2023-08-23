@@ -1,4 +1,5 @@
-﻿using GameCore.CodeBase.Gameplay.Location;
+﻿using GameCore.CodeBase.Gameplay.Bullet;
+using GameCore.CodeBase.Gameplay.Location;
 using GameCore.CodeBase.Gameplay.Player.Movement;
 
 namespace GameCore.CodeBase.Gameplay.Player.Object
@@ -36,7 +37,6 @@ namespace GameCore.CodeBase.Gameplay.Player.Object
         }
 
         private PlayerWeapon CreatePlayerWeapon(PlayerObjectData objectData) =>
-            new(_bulletPool, objectData.WeaponTransform, objectData.BulletSpeed, objectData.BulletDamage,
-                objectData.bulletLifeTime);
+            new(_bulletPool, objectData.WeaponTransform, objectData.BulletSpeed, objectData.bulletLifeTime);
     }
 }

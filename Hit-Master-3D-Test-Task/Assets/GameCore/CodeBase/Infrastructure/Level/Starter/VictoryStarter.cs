@@ -1,20 +1,22 @@
-﻿using System;
-using GameCore.CodeBase.Gameplay.Location;
+﻿using GameCore.CodeBase.Gameplay.Location;
 using GameCore.CodeBase.Gameplay.Player.Object;
+using GameCore.CodeBase.Infrastructure.Level.States;
+using GameCore.CodeBase.Infrastructure.Project.Services.StateMachine;
 using UnityEngine;
 
-namespace GameCore.CodeBase.Infrastructure.Level
+namespace GameCore.CodeBase.Infrastructure.Level.Starter
 {
-    public class VictoryCheck : MonoBehaviour
+    public class VictoryStarter : MonoBehaviour
     {
         private PlayerObjectFactory _playerObjectFactory;
         private Locations _locations;
-        private Action _actions;
+        private IStateMachine _stateMachine;
 
-        public void Construct(PlayerObjectFactory playerObjectFactory, Locations locations)
+        public void Construct(PlayerObjectFactory playerObjectFactory, Locations locations, IStateMachine stateMachine)
         {
             _playerObjectFactory = playerObjectFactory;
             _locations = locations;
+            _stateMachine = stateMachine;
         }
 
         private void Update()
@@ -26,11 +28,7 @@ namespace GameCore.CodeBase.Infrastructure.Level
                 return;
 
             if (lastLocation.Enemies.Count <= 0)
-                _actions?.Invoke();
+                _stateMachine.SwitchTo<LevelLoadingState>();
         }
-
-        public void AddListener(Action action) => _actions += action;
-
-        public void RemoveListener(Action action) => _actions -= action;
     }
 }

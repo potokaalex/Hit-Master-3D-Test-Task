@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using GameCore.CodeBase.Gameplay.Location;
+using GameCore.CodeBase.Gameplay.Player.Animation;
 using GameCore.CodeBase.Gameplay.Player.Object;
-using GameCore.CodeBase.Gameplay.Player.Player.Animation;
 using UnityEngine;
 using UnityEngine.AI;
 

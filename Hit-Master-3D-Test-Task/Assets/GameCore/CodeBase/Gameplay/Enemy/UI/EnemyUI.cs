@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameCore.CodeBase.Gameplay.Enemy
+namespace GameCore.CodeBase.Gameplay.Enemy.Ui
 {
     public class EnemyUI : MonoBehaviour
     {

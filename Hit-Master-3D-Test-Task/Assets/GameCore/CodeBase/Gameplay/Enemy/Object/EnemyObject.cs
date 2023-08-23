@@ -1,7 +1,8 @@
-﻿using GameCore.CodeBase.Gameplay.Location;
+﻿using GameCore.CodeBase.Gameplay.Enemy.Health;
+using GameCore.CodeBase.Gameplay.Location;
 using UnityEngine;
 
-namespace GameCore.CodeBase.Gameplay.Enemy
+namespace GameCore.CodeBase.Gameplay.Enemy.Object
 {
     public class EnemyObject : MonoBehaviour
     {

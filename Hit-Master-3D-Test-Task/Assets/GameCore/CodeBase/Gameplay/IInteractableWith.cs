@@ -1,4 +1,4 @@
-﻿namespace GameCore.CodeBase.Gameplay.Player
+﻿namespace GameCore.CodeBase.Gameplay
 {
     public interface IInteractableWith<in T>
     {

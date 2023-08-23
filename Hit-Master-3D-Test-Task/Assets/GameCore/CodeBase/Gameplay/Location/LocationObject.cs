@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using GameCore.CodeBase.Gameplay.Enemy;
+using GameCore.CodeBase.Gameplay.Enemy.Object;
 using UnityEngine;
 
 namespace GameCore.CodeBase.Gameplay.Location

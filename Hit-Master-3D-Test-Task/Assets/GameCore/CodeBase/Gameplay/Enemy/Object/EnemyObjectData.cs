@@ -1,7 +1,9 @@
-﻿using GameCore.CodeBase.Gameplay.Enemy.Ragdoll;
+﻿using GameCore.CodeBase.Gameplay.Enemy.Collision;
+using GameCore.CodeBase.Gameplay.Enemy.Ragdoll;
+using GameCore.CodeBase.Gameplay.Enemy.Ui;
 using UnityEngine;
 
-namespace GameCore.CodeBase.Gameplay.Enemy
+namespace GameCore.CodeBase.Gameplay.Enemy.Object
 {
     public class EnemyObjectData : MonoBehaviour
     {

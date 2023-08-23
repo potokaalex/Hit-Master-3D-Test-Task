@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameCore.CodeBase.Gameplay.Enemy
+namespace GameCore.CodeBase.Gameplay.Enemy.Health
 {
     public class EnemyHealth
     {

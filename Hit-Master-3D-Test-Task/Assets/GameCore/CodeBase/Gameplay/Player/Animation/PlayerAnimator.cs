@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameCore.CodeBase.Gameplay.Player.Player.Animation
+namespace GameCore.CodeBase.Gameplay.Player.Animation
 {
     public class PlayerAnimator
     {

@@ -1,5 +1,5 @@
-﻿using GameCore.CodeBase.Gameplay.Location;
-using GameCore.CodeBase.Gameplay.Player;
+﻿using GameCore.CodeBase.Gameplay.Bullet;
+using GameCore.CodeBase.Gameplay.Location;
 using GameCore.CodeBase.Gameplay.Player.Input;
 using GameCore.CodeBase.Gameplay.Player.Object;
 using GameCore.CodeBase.Infrastructure.Project.Services.StateMachine;

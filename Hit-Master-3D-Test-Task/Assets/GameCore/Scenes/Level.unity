@@ -1697,7 +1697,7 @@ MonoBehaviour:
     - {fileID: 499800159}
     - {fileID: 300550284}
     PlayerPrefab: {fileID: 3340474610858249603, guid: d2aeb4cddafcc2d4389144ea2b190bf1, type: 3}
-    BulletPrefab: {fileID: 5572926093860404802, guid: e229db28bee2c7241a84ea782894a710, type: 3}
+    BulletPrefab: {fileID: 8065724786172444071, guid: e229db28bee2c7241a84ea782894a710, type: 3}
 --- !u!114 &1329387396
 MonoBehaviour:
   m_ObjectHideFlags: 0

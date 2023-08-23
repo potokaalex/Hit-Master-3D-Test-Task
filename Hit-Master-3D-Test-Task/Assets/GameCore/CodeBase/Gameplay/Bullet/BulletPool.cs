@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using GameCore.CodeBase.Gameplay.Bullet.Object;
 
-namespace GameCore.CodeBase.Gameplay.Player
+namespace GameCore.CodeBase.Gameplay.Bullet
 {
     public class BulletPool
     {
@@ -9,15 +10,7 @@ namespace GameCore.CodeBase.Gameplay.Player
 
         public BulletPool(BulletFactory factory) => _factory = factory;
 
-        public BulletObject Get()
-        {
-            if (_bullets.Count > 0) 
-                return _bullets.Pop();
-            
-            var bullet = _factory.Create();
-            bullet.Constructor(this);
-            return bullet;
-        }
+        public BulletObject Get() => _bullets.Count > 0 ? _bullets.Pop() : _factory.Create();
 
         public void Return(BulletObject bulletObject) => _bullets.Push(bulletObject);
     }
