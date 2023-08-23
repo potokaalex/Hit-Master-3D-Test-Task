@@ -1,5 +1,4 @@
 ﻿using GameCore.CodeBase.Gameplay.Location;
-using GameCore.CodeBase.Gameplay.Player;
 using GameCore.CodeBase.Gameplay.Player.Movement;
 
 namespace GameCore.CodeBase.Gameplay.Player.Object
@@ -31,7 +30,7 @@ namespace GameCore.CodeBase.Gameplay.Player.Object
         {
             var movement = new PlayerMovement();
 
-            movement.Constructor(objectData.NavMeshAgent);
+            movement.Constructor(objectData.NavMeshAgent, new(objectData.Animator));
 
             return movement;
         }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using GameCore.CodeBase.Gameplay.Location;
+using GameCore.CodeBase.Gameplay.Player.Player.Animation;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,10 +9,15 @@ namespace GameCore.CodeBase.Gameplay.Player.Movement
     public class PlayerMovement
     {
         private NavMeshAgent _agent;
+        private PlayerAnimator _animator;
 
         public bool IsMoving { get; private set; }
 
-        public void Constructor(NavMeshAgent agent) => _agent = agent;
+        public void Constructor(NavMeshAgent agent,PlayerAnimator animator)
+        {
+            _agent = agent;
+            _animator = animator;
+        }
 
         public void SetPosition(Vector3 position) =>
             _agent.transform.position = position;
@@ -24,7 +30,7 @@ namespace GameCore.CodeBase.Gameplay.Player.Movement
             var pointIndex = 0;
 
             IsMoving = true;
-
+            _animator.PlayRun();
             while (pointIndex < location.TransitionPoints.Length)
             {
                 var targetTransform = location.TransitionPoints[pointIndex].transform;
@@ -46,7 +52,8 @@ namespace GameCore.CodeBase.Gameplay.Player.Movement
 
                 pointIndex++;
             }
-
+            
+            _animator.PlayIdle();
             IsMoving = false;
         }
     }

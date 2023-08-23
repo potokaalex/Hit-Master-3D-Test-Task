@@ -259,7 +259,7 @@ MonoBehaviour:
   Camera: {fileID: 8326652139006877539}
   NavMeshAgent: {fileID: 4027399681873436315}
   WeaponTransform: {fileID: 4266053156433057713}
-  Animator: {fileID: 0}
+  Animator: {fileID: 4167036819277760289}
   BulletSpeed: 300
   BulletDamage: -1
   bulletLifeTime: 10
@@ -576,6 +576,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a591844cc98acf249893ef2986f32bcc, type: 2}
+    - target: {fileID: 95389170962898660, guid: f11fc98cf1e8d5547a9b2ec85cc9c664, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2b727afdac949d5478bea8dc718b9e1d, type: 2}
     - target: {fileID: 137166910513705172, guid: f11fc98cf1e8d5547a9b2ec85cc9c664, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -585,5 +589,10 @@ PrefabInstance:
 --- !u!4 &4073560526416684559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4111819248598986, guid: f11fc98cf1e8d5547a9b2ec85cc9c664, type: 3}
+  m_PrefabInstance: {fileID: 4073129945167026629}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4167036819277760289 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95389170962898660, guid: f11fc98cf1e8d5547a9b2ec85cc9c664, type: 3}
   m_PrefabInstance: {fileID: 4073129945167026629}
   m_PrefabAsset: {fileID: 0}

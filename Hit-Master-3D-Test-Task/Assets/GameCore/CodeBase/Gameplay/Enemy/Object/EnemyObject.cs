@@ -10,8 +10,8 @@ namespace GameCore.CodeBase.Gameplay.Enemy
         private EnemyHealth _health;
 
         public EnemyObjectData Data => _data;
-        
-        public void Constructor(LocationObject location,EnemyHealth health)
+
+        public void Constructor(LocationObject location, EnemyHealth health)
         {
             _location = location;
             _health = health;
@@ -37,7 +37,7 @@ namespace GameCore.CodeBase.Gameplay.Enemy
             _data.Ui.Hide();
             _data.CollisionHandler.Inactive();
         }
-        
+
         private void Remove()
         {
             gameObject.SetActive(false);

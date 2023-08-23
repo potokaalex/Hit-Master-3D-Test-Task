@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using GameCore.CodeBase.Gameplay.Enemy;
 
 namespace GameCore.CodeBase.Gameplay.Location
 {
