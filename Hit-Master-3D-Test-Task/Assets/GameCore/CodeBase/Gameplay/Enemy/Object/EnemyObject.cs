@@ -40,7 +40,7 @@ namespace GameCore.CodeBase.Gameplay.Enemy
 
         private void Remove()
         {
-            gameObject.SetActive(false);
+            _data.Ragdoll.Active();
             _location.RemoveEnemy(this);
         }
     }

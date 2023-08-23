@@ -17,6 +17,7 @@ namespace GameCore.CodeBase.Gameplay.Location
                 enemy.Constructor(this, new(enemy.Data.MaxHealth));
                 enemy.Data.Ui.Initialize(enemy.Data.MaxHealth);
                 enemy.Inactive();
+                enemy.Data.Ragdoll.Initialize();
             }
         }
 
