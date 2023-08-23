@@ -42,6 +42,7 @@ namespace GameCore.CodeBase.Gameplay.Enemy
         {
             _data.Ragdoll.Active();
             _location.RemoveEnemy(this);
+            Inactive();
         }
     }
 }
