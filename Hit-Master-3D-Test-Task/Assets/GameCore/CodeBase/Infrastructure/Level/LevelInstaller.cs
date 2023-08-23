@@ -14,6 +14,7 @@ namespace GameCore.CodeBase.Infrastructure.Level
         {
             BindStateMachine();
             BindPlayer();
+            BindBullet();
             
             Container.Bind<Locations>().AsSingle();
             Container.Bind<LevelFactory>().AsSingle();
@@ -24,11 +25,17 @@ namespace GameCore.CodeBase.Infrastructure.Level
             Container.Bind<PlayerObjectFactory>().AsSingle();
             Container.Bind<PlayerInputFactory>().AsSingle();
         }
-        
+
         private void BindStateMachine()
         {
             Container.Bind<IStateFactory>().To<StateFactory>().AsSingle();
             Container.Bind<IStateMachine>().To<StateMachine>().AsSingle();
+        }
+
+        private void BindBullet()
+        {
+            Container.Bind<BulletFactory>().AsSingle();
+            Container.Bind<BulletPool>().AsSingle();
         }
     }
 }

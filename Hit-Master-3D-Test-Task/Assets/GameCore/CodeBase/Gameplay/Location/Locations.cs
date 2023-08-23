@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
+using GameCore.CodeBase.Gameplay.Enemy;
 
 namespace GameCore.CodeBase.Gameplay.Location
 {
     public class Locations
     {
-        private readonly Dictionary<int, LocationData> _locations = new();
+        private readonly Dictionary<int, LocationObject> _locations = new();
 
-        public void Initialize(LocationData[] locations)
+        public void Initialize(LocationObject[] locations)
         {
             foreach (var location in locations)
                 _locations[location.Index] = location;
@@ -15,10 +15,10 @@ namespace GameCore.CodeBase.Gameplay.Location
 
         public bool IsLocationExist(int locationIndex) => _locations.ContainsKey(locationIndex);
 
-        public LocationData GetLocation(int locationIndex) => _locations[locationIndex];
+        public LocationObject GetLocation(int locationIndex) => _locations[locationIndex];
 
-        public LocationData GetFirstLocation() => GetLocation(0);
+        public LocationObject GetFirstLocation() => GetLocation(0);
 
-        public LocationData GetLastLocation() => _locations[_locations.Count - 1];
+        public LocationObject GetLastLocation() => _locations[_locations.Count - 1];
     }
 }

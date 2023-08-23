@@ -1,5 +1,6 @@
 ﻿using GameCore.CodeBase.Gameplay.Location;
 using GameCore.CodeBase.Gameplay.Player.Object;
+using Unity.VisualScripting;
 
 namespace GameCore.CodeBase.Gameplay.Player.Input
 {
@@ -15,10 +16,12 @@ namespace GameCore.CodeBase.Gameplay.Player.Input
             _locations = locations;
         }
 
-        public void CreatePlayerInput(PlayerInput prefab)
+        public void CreatePlayerInput()
         {
-            _input = UnityEngine.Object.Instantiate(prefab);
-            _input.Constructor(_objectFactory.Get(), _locations);
+            var objectData = _objectFactory.Get().GetComponent<PlayerObjectData>();
+
+            _input = _objectFactory.Get().AddComponent<PlayerInput>();
+            _input.Constructor(_objectFactory.Get(), objectData, _locations);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace GameCore.CodeBase.Gameplay.Player.Movement
         public void SetRotation(Quaternion rotation) =>
             _agent.transform.rotation = rotation;
         
-         public IEnumerator MoveCoroutine(LocationData location)
+         public IEnumerator MoveCoroutine(LocationObject location)
         {
             var pointIndex = 0;
 

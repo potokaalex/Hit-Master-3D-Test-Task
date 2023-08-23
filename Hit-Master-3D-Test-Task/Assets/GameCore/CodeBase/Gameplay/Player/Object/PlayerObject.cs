@@ -7,15 +7,17 @@ namespace GameCore.CodeBase.Gameplay.Player.Object
     public class PlayerObject : MonoBehaviour
     {
         private PlayerMovement _movement;
+        private PlayerWeapon _weapon;
 
-        public LocationData CurrentLocation { get; private set; }
+        public LocationObject CurrentLocation { get; private set; }
 
         public bool IsMoving => _movement.IsMoving;
 
-        public void Constructor(LocationData firstLocation, PlayerMovement movement)
+        public void Constructor(LocationObject firstLocation, PlayerMovement movement, PlayerWeapon weapon)
         {
             CurrentLocation = firstLocation;
             _movement = movement;
+            _weapon = weapon;
         }
 
         public void Initialize()
@@ -26,10 +28,14 @@ namespace GameCore.CodeBase.Gameplay.Player.Object
             _movement.SetRotation(targetTransform.rotation);
         }
 
-        public void Move(LocationData location)
+        public void ChangeLocation(LocationObject location)
         {
-            StartCoroutine(_movement.MoveCoroutine(location));
             CurrentLocation = location;
+            CurrentLocation.Active();
+
+            StartCoroutine(_movement.MoveCoroutine(location));
         }
+
+        public void Shoot(Vector3 targetPosition) => _weapon.Shoot(targetPosition);
     }
 }

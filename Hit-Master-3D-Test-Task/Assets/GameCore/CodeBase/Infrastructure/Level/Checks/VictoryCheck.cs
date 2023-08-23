@@ -25,7 +25,7 @@ namespace GameCore.CodeBase.Infrastructure.Level
             if (currentLocation != lastLocation)
                 return;
 
-            if (lastLocation.EnemyCount <= 0)
+            if (lastLocation.Enemies.Count <= 0)
                 _actions?.Invoke();
         }
 

@@ -41,7 +41,7 @@ namespace GameCore.CodeBase.Infrastructure.Level.States
             _levelFactory.RemoveGameplayCheck();
         }
 
-        private void SetupPlayer(PlayerData prefab)
+        private void SetupPlayer(PlayerObjectData prefab)
         {
             _playerObjectFactory.CreatePlayerObject(prefab);
             _playerObjectFactory.Get().Initialize();
