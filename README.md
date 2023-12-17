@@ -1,6 +1,8 @@
 # Hit-Master-3D-Test-Task
 This is a test for the junior position.
 
+![0](https://github.com/Kot-Alenya/Hit-Master-3D-Test-Task/assets/98838657/4d605c41-285b-41e6-8be9-1f87f516bd75)
+
 # Task text
 - It is necessary to assemble a neat, simple game location.
 - Arrange the waypoints and implement the movement of the character on them. 
